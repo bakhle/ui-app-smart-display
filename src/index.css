@@ -1,0 +1,12 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  font-family: Verdana, sans-serif;
+  background-color: #1976d2;
+  background: url('../public/images/6.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}

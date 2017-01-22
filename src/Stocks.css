@@ -1,0 +1,13 @@
+.Stocks {
+  position: absolute;
+
+  top: 30%;
+}
+
+.Stocks .container ul {
+  list-style: none;
+}
+
+.Stocks ul li {
+  padding-bottom: 0.5em;
+}

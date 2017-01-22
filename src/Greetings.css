@@ -1,0 +1,17 @@
+.Greetings {
+  position: absolute;
+  bottom: 5%;
+  text-align: center;
+
+  left: 0;
+  right: 0;
+  margin: auto
+}
+
+.Greetings .container {
+  height: inherit;
+  width: inherit;
+}
+
+.Greetings .container p {
+}
