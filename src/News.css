@@ -1,0 +1,17 @@
+.News {
+  position: absolute;
+  top: 30%;
+  right: 4%;
+  text-align: center;
+}
+
+.News .container p {
+  margin-bottom: 8em;
+}
+
+.News .container img {
+  position: absolute;
+  top: 40%;
+  right: 4%;
+  max-width: 25em;
+}
