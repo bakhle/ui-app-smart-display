@@ -8,8 +8,9 @@ class Weather extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      latitude: 'Hello World I am awesome',
-      longitude: 'Hello World I am awesome'
+      latitude: '',
+      longitude: '',
+      place: 'Earth'
     }
   }
 
@@ -44,12 +45,14 @@ class Weather extends Component {
     Request.get(serverUrl)
       .then((response) => {
         const profile = response.body;
-        const lat = profile.location.split(',')[0];
-        const lon = profile.location.split(',')[1];
+        const latitude = profile.location.split(',')[0];
+        const longitude = profile.location.split(',')[1];
+        const location = profile.city;
 
         this.setState({
-          latitude: lat,
-          longitude: lon
+          latitude,
+          longitude,
+          location
         });
       })
       .catch((err) => {
@@ -58,7 +61,7 @@ class Weather extends Component {
   }
 
   render() {
-    const iframeLink = 'http://forecast.io/embed/#name=Vasco da Gama&color=#ffffff&text-color=#ffffff&font-size=20&units=uk&lat='+ this.state.latitude + '&lon=' + this.state.longitude;
+    const iframeLink = 'http://forecast.io/embed/#color=#ffffff&text-color=#ffffff&font-size=20&units=uk&lat='+ this.state.latitude + '&lon=' + this.state.longitude + '&name=' + this.state.location;
     
     return (
       <div className='Weather'>
