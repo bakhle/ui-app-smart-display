@@ -1,0 +1,17 @@
+.Todos {
+  position: absolute;
+
+  top: 60%;
+}
+
+.Todos .container ul {
+  list-style: none;
+}
+
+.Todos ul li {
+  padding-bottom: 0.5em;
+}
+
+.Todos ul li .checkbox {
+  margin-right: 0.8em;
+}
