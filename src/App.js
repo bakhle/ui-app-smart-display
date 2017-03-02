@@ -3,6 +3,8 @@ import './App.css';
 import News from './News';
 import Stocks from './Stocks';
 import Todos from './Todos';
+import Greetings from './Greetings';
+import DateTime from './DateTime';
 import Weather from './Weather';
 
 class App extends Component {
@@ -11,8 +13,10 @@ class App extends Component {
       <div className="App">
         <Stocks />
         <Todos />
+        <DateTime />
         <Weather />
         <News />
+        <Greetings />
       </div>
     );
   }
