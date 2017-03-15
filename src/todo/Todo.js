@@ -40,6 +40,57 @@ class Todo extends Component {
   componentWillUnmount() {
   };
 
+  createTodo(e) {
+    const serverUrl = 'http://localhost:5000/users/todos';
+    e.preventDefault();
+
+    const todo = {
+      text: this.refs.newTodo.value,
+      status: 'false'
+    };
+
+    Request.post(serverUrl)
+      .send(todo)
+      .then((response) => {
+        this.setState({
+          todos: response.body
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    this.refs.newTodo.value = '';
+  };
+
+  deleteTodo(i, e) {
+    const serverUrl = 'http://localhost:5000/users/todos/' + i;
+
+    Request
+      .delete(serverUrl)
+      .then((response) => {
+        this.setState({
+          todos: response.body
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  fetchTodos() {
+    const serverUrl = 'http://localhost:5000/users/todos';
+    Request.get(serverUrl)
+      .then((response) => {
+        this.setState({
+          todos: response.body
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   toggleStatus(boolString) {
     if (boolString === 'false') {
       return 'true';
@@ -48,31 +99,14 @@ class Todo extends Component {
   };
 
   toggleState(i, event) {
+    const serverUrl = 'http://localhost:5000/users/todos/' + i;
     let todos = this.state.todos;
 
     todos[i].status = this.toggleStatus(todos[i].status);
 
-    this.setState({
-      todos
-    }, () => {
-      const serverUrl = 'http://localhost:5000/users/todos/' + i;
-      Request
-        .post(serverUrl)
-        .send(todos[i])
-        .then((response) => {
-          this.setState({
-            todos: response.body
-          });
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    });
-  };
-
-  fetchTodos () {
-    const serverUrl = 'http://localhost:5000/users/todos';
-    Request.get(serverUrl)
+    Request
+      .post(serverUrl)
+      .send(todos[i])
       .then((response) => {
         this.setState({
           todos: response.body
@@ -87,8 +121,9 @@ class Todo extends Component {
 
     const todoList = _.map(this.state.todos, (todo, i) => {
       return(
-        <li className={todo.status} key={i} value={todo.text} onClick={this.toggleState.bind(this, i)}>
-          {todo.text}
+        <li className={todo.status} key={i} value={todo.text}>
+          <span onClick={this.toggleState.bind(this, i)}>{todo.text}</span>
+          <i className="fa fa-times delete-todo" aria-hidden="true" onClick={this.deleteTodo.bind(this, i)}></i>
         </li>
       );
     });
@@ -97,6 +132,12 @@ class Todo extends Component {
       <div className="Todo">
         <div className="container">
           <ul>{todoList}</ul>
+          <form onSubmit={this.createTodo.bind(this)} className="form-inline">
+            <div className="form-group">
+              <input className="todo-text form-control" ref='newTodo' placeholder='New Todo' type='text'></input>
+            </div>
+            <button type="submit" className="btn btn-success">Submit</button>
+          </form>
         </div>
       </div>
     );

@@ -17,3 +17,12 @@
   text-decoration: line-through; 
   color: #efefef;
 }
+
+.Todo .container ul .delete-todo {
+  margin-left: 0.5em;
+}
+
+.Todo .container form {
+  width: 50%;
+  margin-top: 2em;
+}
