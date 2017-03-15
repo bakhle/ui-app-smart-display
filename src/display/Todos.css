@@ -1,11 +1,12 @@
 .Todos {
   position: absolute;
 
-  top: 60%;
+  top: 62%;
 }
 
 .Todos .container ul {
   list-style: none;
+  display: inline-block;
 }
 
 .Todos ul li {
@@ -14,4 +15,5 @@
 
 .Todos ul li .checkbox {
   margin-right: 0.8em;
+  display: inline-block;
 }

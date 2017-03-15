@@ -6,6 +6,7 @@
 }
 
 .News .container p {
+  float: right;
   margin-bottom: 8em;
 }
 

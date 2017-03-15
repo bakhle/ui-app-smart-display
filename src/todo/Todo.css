@@ -1,0 +1,28 @@
+.Todo {
+  margin-top: 5em;
+  margin-left: 2em;
+}
+
+.Todo .container ul {
+  list-style: none;
+  display: inline-block;
+}
+
+.Todo ul li {
+  padding-bottom: 0.5em;
+  cursor: pointer;
+}
+
+.Todo .container ul .true {
+  text-decoration: line-through; 
+  color: #efefef;
+}
+
+.Todo .container ul .delete-todo {
+  margin-left: 0.5em;
+}
+
+.Todo .container form {
+  width: 50%;
+  margin-top: 2em;
+}

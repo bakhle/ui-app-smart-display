@@ -52,6 +52,7 @@ class News extends Component {
         this.setState({
           news: response.body
         });
+        this.setHeadline();
       })
       .catch((err) => {
         console.error(err);
