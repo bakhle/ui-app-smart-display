@@ -41,7 +41,7 @@ class Stocks extends Component {
 
 
   fetchStocks(){
-    const serverUrl = 'http://localhost:5000/users/stocks';
+    const serverUrl = this.props.config.serverUrl + '/stocks';
     Request.get(serverUrl)
       .then((response) => {
         this.setState({
@@ -59,7 +59,7 @@ class Stocks extends Component {
         <li className="stock" key={stock.id}>
           <span className="heading col-md-8">
             <b>
-              {stock.t} 
+              {stock.t}
             </b> - {stock.l_cur}
           </span>
         </li>

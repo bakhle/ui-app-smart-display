@@ -4,6 +4,8 @@ import Request from 'superagent';
 
 import './Todo.css';
 
+const config = require('../../config/config.json');
+
 
 class Todo extends Component {
   constructor(props) {
@@ -14,7 +16,7 @@ class Todo extends Component {
   }
 
   componentWillMount() {
-    this.fetchTodos(); 
+    this.fetchTodos();
   };
 
   componentDidMount() {
@@ -41,7 +43,7 @@ class Todo extends Component {
   };
 
   createTodo(e) {
-    const serverUrl = 'http://localhost:5000/users/todos';
+    const serverUrl = config.serverUrl + '/todos';
     e.preventDefault();
 
     const todo = {
@@ -64,7 +66,7 @@ class Todo extends Component {
   };
 
   deleteTodo(i, e) {
-    const serverUrl = 'http://localhost:5000/users/todos/' + i;
+    const serverUrl = config.serverUrl + '/todos/' + i;
 
     Request
       .delete(serverUrl)
@@ -79,7 +81,7 @@ class Todo extends Component {
   }
 
   fetchTodos() {
-    const serverUrl = 'http://localhost:5000/users/todos';
+    const serverUrl = config.serverUrl + '/todos';
     Request.get(serverUrl)
       .then((response) => {
         this.setState({
@@ -99,7 +101,7 @@ class Todo extends Component {
   };
 
   toggleState(i, event) {
-    const serverUrl = 'http://localhost:5000/users/todos/' + i;
+    const serverUrl = config.serverUrl + '/todos/' + i;
     let todos = this.state.todos;
 
     todos[i].status = this.toggleStatus(todos[i].status);

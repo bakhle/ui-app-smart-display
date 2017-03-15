@@ -14,7 +14,7 @@ class News extends Component {
   }
 
   componentWillMount() {
-    this.fetchNews(); 
+    this.fetchNews();
   };
 
   componentDidMount() {
@@ -23,7 +23,7 @@ class News extends Component {
       this.fetchNews();
     }, 1000 * 60 * 60);
 
-    // change current news item continuously 
+    // change current news item continuously
     setInterval (() => {
       this.setHeadline();
     }, 1000 * 30 );
@@ -46,7 +46,7 @@ class News extends Component {
   };
 
   fetchNews () {
-    const serverUrl = 'http://localhost:5000/users/news';
+    const serverUrl = this.props.config.serverUrl + '/news';
     Request.get(serverUrl)
       .then((response) => {
         this.setState({

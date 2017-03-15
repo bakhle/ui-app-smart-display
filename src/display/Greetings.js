@@ -58,7 +58,7 @@ class Greetings extends Component {
 
 
   fetchGreeting() {
-    const serverUrl = 'http://localhost:5000/users/greetings';
+    const serverUrl = this.props.config.serverUrl + '/greetings';
     Request.get(serverUrl)
       .then((response) => {
         this.setState({

@@ -41,7 +41,7 @@ class Todos extends Component {
 
 
   fetchTodos(){
-    const serverUrl = 'http://localhost:5000/users/todos';
+    const serverUrl = this.props.config.serverUrl + '/todos';
     Request.get(serverUrl)
       .then((response) => {
         this.setState({
@@ -55,7 +55,7 @@ class Todos extends Component {
 
   render() {
     const stockList = _.map(this.state.todos, (todo) => {
-      if (todo.status === 'false') {  //  display only the ones which are not completed 
+      if (todo.status === 'false') {  //  display only the ones which are not completed
         return(
           <li className="todo" key={todo.text}>
             <label><input className="checkbox" type="checkbox" value="" disabled />{todo.text}</label>
