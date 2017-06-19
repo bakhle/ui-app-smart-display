@@ -63,7 +63,7 @@ class Greetings extends Component {
       .then((response) => {
         this.setState({
           greetings: response.body
-        });
+        }, () => {this.setGreeting()});
       })
       .catch((err) => {
         console.error(err);
